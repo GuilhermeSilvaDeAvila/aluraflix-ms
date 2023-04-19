@@ -1,4 +1,4 @@
-package br.com.alura.aluraflix.handler;
+package br.com.alura.aluraflix.config;
 
 import br.com.alura.aluraflix.exception.NotFoundException;
 import br.com.alura.aluraflix.model.MessageError;
@@ -18,7 +18,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestControllerAdvice
-public class VideoExceptionHandler extends ResponseEntityExceptionHandler {
+public class Handler extends ResponseEntityExceptionHandler {
 
     @Autowired
     private MessageSource messageSource;
@@ -44,9 +44,8 @@ public class VideoExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, response, headers, status, request);
     }
 
-
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<Object> handlerVideoNotFoundException(NotFoundException ex, WebRequest request){
+    public ResponseEntity<Object> handlerNotFoundException(NotFoundException ex, WebRequest request){
         return handleExceptionInternal(ex, "", new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 }
