@@ -1,6 +1,6 @@
 package br.com.alura.aluraflix.handler;
 
-import br.com.alura.aluraflix.exception.VideoNotFoundException;
+import br.com.alura.aluraflix.exception.NotFoundException;
 import br.com.alura.aluraflix.model.MessageError;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +45,8 @@ public class VideoExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
-    @ExceptionHandler(VideoNotFoundException.class)
-    public ResponseEntity<Object> handlerVideoNotFoundException(VideoNotFoundException ex, WebRequest request){
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<Object> handlerVideoNotFoundException(NotFoundException ex, WebRequest request){
         return handleExceptionInternal(ex, "", new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 }
